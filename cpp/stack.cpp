@@ -10,7 +10,7 @@ void Stack::pop() {
 }
 
 void Stack::print() {
-    std::cout << "Stack: ";
+    std::cout << "Стек: ";
     for (int x : data)
         std::cout << x << " ";
     std::cout << std::endl;

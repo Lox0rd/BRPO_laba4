@@ -19,7 +19,7 @@ private:
 public:
     Tree();
     void push(int value);
-    void pop();       // удаление минимума (простая версия)
+    void pop();
     void print();
-    int height();     // уникальная команда
+    int height();
 };

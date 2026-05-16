@@ -3,7 +3,8 @@ CXX = g++
 FLAGS = -std=c++17 -O0 --coverage
 LIBS = -lgtest -lgtest_main -pthread
 
-SRC = main.cpp stack.cpp queue.cpp tree.cpp test.cpp
+SRC = main.cpp stack.cpp queue.cpp tree.cpp
+TEST_SRC = test_runner.cpp stack.cpp queue.cpp tree.cpp
 
 TARGET = tests
 REPORT = coverage_report
@@ -16,19 +17,23 @@ run: all
 
 coverage:
 	rm -f *.gcda *.gcno coverage.info
-	$(CXX) $(FLAGS) $(SRC) $(LIBS) -o $(TARGET)
+	$(CXX) $(FLAGS) $(TEST_SRC) $(LIBS) -o $(TARGET)
 	./$(TARGET)
 
+	# Сбор данных покрытия
 	lcov --capture --directory . \
 	--output-file coverage.info \
-	--ignore-errors inconsistent,unexecuted
+	--ignore-errors inconsistent,unexecuted,empty
 
-	lcov --remove coverage.info '/usr/*' '*/test.cpp' \
-	--output-file coverage.info
+	# Фильтрация: исключаем системные библиотеки и тестовые файлы
+	lcov --remove coverage.info '/usr/*' '*/test_runner.cpp' \
+	--output-file coverage.info \
+	--ignore-errors empty
 
-	genhtml coverage.info --output-directory $(REPORT)
+	# Генерация HTML‑отчёта
+	genhtml coverage.info --output-directory $(REPORT) \
+	--ignore-errors empty
 
-	@echo "Open $(REPORT)/index.html"
 
 clean:
 	rm -f $(TARGET) *.gcda *.gcno coverage.info

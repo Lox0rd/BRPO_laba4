@@ -21,7 +21,7 @@ void Tree::push(int value) {
     insert(root, value);
 }
 
-// удаляем самый левый (минимальный) элемент
+
 void Tree::pop() {
     Node* parent = nullptr;
     Node* curr = root;
@@ -49,7 +49,7 @@ void Tree::print(Node* node) {
 }
 
 void Tree::print() {
-    std::cout << "Tree: ";
+    std::cout << "Дерево: ";
     print(root);
     std::cout << std::endl;
 }

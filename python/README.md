@@ -1,26 +1,35 @@
 # Python часть проекта
 
-Реализация структуры данных (например, стек) на Python.
+Реализация структуры данных стек на Python.
 
 Используются:
 - `unittest` для тестов
 - `coverage.py` для анализа покрытия
 - `venv` для изоляции окружения
 
-## Запуск тестов
+## Сборка проекта
+
 ```bash
-source venv/bin/activate
-pip install -r requirements.txt 
+make
 ```
+Создание виртуального окружения и установка зависимостей
 ```bash
-python -m unittest
+make install
 ```
-Coverage
+Запуск программы
 ```bash
-coverage run -m unittest
-coverage html
+make run
 ```
-Открыть отчёт:
+Генерация отчёта покрытия
+```bash
+make coverage
+```
+После генерации открыть:
 ```bash
 htmlcov/index.html
+```
+Очистка проекта
+```bash
+make clean-venv //для удаление окружения
+make clean //для удаление временных файлов
 ```

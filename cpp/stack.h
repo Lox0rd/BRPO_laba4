@@ -10,5 +10,5 @@ public:
     void push(int value);
     void pop();
     void print();
-    int peek(); // уникальная команда
+    int peek();
 };

@@ -10,7 +10,7 @@ void Queue::pop() {
 }
 
 void Queue::print() {
-    std::cout << "Queue: ";
+    std::cout << "Очередь: ";
     for (int x : data)
         std::cout << x << " ";
     std::cout << std::endl;
